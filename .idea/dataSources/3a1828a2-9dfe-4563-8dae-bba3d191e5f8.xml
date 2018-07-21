@@ -25,5 +25,6 @@
     <schema id="19" parent="1" name="vehicles"/>
     <schema id="20" parent="1" name="vehicles3"/>
     <schema id="21" parent="1" name="world"/>
+    <schema id="22" parent="1" name="jpa-youtube"/>
   </database-model>
 </dataSource>
