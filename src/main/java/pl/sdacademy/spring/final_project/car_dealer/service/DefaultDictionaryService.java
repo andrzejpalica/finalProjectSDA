@@ -9,17 +9,17 @@ import java.util.List;
 @Service
 public class DefaultDictionaryService implements DictionaryService {
 
-    private FuelRepository fuelRepository;
     private ManufacturerRepository manufacturerRepository;
+    private FuelRepository fuelRepository;
     private ModelRepository modelRepository;
     private TransmissionRepository transmissionRepository;
     private VehicleCategoryRepository vehicleCategoryRepository;
     private VehicleTypeRepository vehicleTypeRepository;
 
 
-    public DefaultDictionaryService(FuelRepository fuelRepository, ManufacturerRepository manufacturerRepository, ModelRepository modelRepository, TransmissionRepository transmissionRepository, VehicleCategoryRepository vehicleCategoryRepository, VehicleTypeRepository vehicleTypeRepository) {
-        this.fuelRepository = fuelRepository;
+    public DefaultDictionaryService(ManufacturerRepository manufacturerRepository,FuelRepository fuelRepository, ModelRepository modelRepository, TransmissionRepository transmissionRepository, VehicleCategoryRepository vehicleCategoryRepository, VehicleTypeRepository vehicleTypeRepository) {
         this.manufacturerRepository = manufacturerRepository;
+        this.fuelRepository = fuelRepository;
         this.modelRepository = modelRepository;
         this.transmissionRepository = transmissionRepository;
         this.vehicleCategoryRepository = vehicleCategoryRepository;

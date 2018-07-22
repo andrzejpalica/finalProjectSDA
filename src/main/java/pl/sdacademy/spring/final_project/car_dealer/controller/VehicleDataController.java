@@ -85,13 +85,13 @@ public class VehicleDataController {
         if (bindingResult.hasErrors()) {
             model.addAttribute("dropList", dropList);
             model.addAttribute("addedVehicle", vehicleToSave);
-            return "addCar";
+            return "addVehicle";
         }
         if (vehicleDataService.loadVehicleByVin(vehicleToSave.getVin()) != null) {
             bindingResult.rejectValue("vin", "vin", "Vehicle cannot be sold Twice");
             model.addAttribute("dropList", dropList);
             model.addAttribute("addedVehicle", vehicleToSave);
-            return "addeVehicle";
+            return "addVehicle";
         }
         vehicleDataService.addVehicle(vehicleToSave);
 
