@@ -8,7 +8,7 @@ public interface DictionaryService {
 
     List<Manufacturer> getManufacturer();
 
-    List<Model> getModel();
+    List<VechicleModel> getModel();
 
     List<Transmission> getTransmission();
 

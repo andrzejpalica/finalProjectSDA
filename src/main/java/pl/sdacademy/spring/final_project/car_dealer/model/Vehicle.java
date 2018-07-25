@@ -18,7 +18,7 @@ public class Vehicle extends BaseModel {
 
     @OneToOne
     @JoinColumn(name = "model_id")
-    private Model model;
+    private VechicleModel model;
 
     @Column(name = "insurance_id")
     private String insuranceId;
@@ -88,11 +88,11 @@ public class Vehicle extends BaseModel {
         this.manufacturer = manufacturer;
     }
 
-    public Model getModel() {
+    public VechicleModel getModel() {
         return model;
     }
 
-    public void setModel(Model model) {
+    public void setModel(VechicleModel model) {
         this.model = model;
     }
 

@@ -1,9 +1,9 @@
 package pl.sdacademy.spring.final_project.car_dealer.controller;
 
-import pl.sdacademy.spring.final_project.car_dealer.dto.AddCarDropDownListDto;
+import org.springframework.ui.Model;
+import pl.sdacademy.spring.final_project.car_dealer.dto.AddVehicleDropDownListDto;
 import pl.sdacademy.spring.final_project.car_dealer.model.Vehicle;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.sdacademy.spring.final_project.car_dealer.service.DefaultDictionaryService;
@@ -58,8 +58,8 @@ public class VehicleDataController {
 
     @GetMapping("/new")
     public String addVehicleForm(Model model) {
-        AddCarDropDownListDto addCarDropDownListDto = getDropList();
-        model.addAttribute("dropList", addCarDropDownListDto);
+        AddVehicleDropDownListDto addVehicleDropDownListDto = getDropList();
+        model.addAttribute("dropList", addVehicleDropDownListDto);
         Vehicle attributeValue = new Vehicle();
         model.addAttribute("addedVehicle", attributeValue);
         return "addVehicle";
@@ -80,7 +80,7 @@ public class VehicleDataController {
             BindingResult bindingResult,
             Model model) {
 
-        AddCarDropDownListDto dropList = getDropList();
+        AddVehicleDropDownListDto dropList = getDropList();
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("dropList", dropList);
@@ -95,18 +95,18 @@ public class VehicleDataController {
         }
         vehicleDataService.addVehicle(vehicleToSave);
 
-        return "redirect:/cars";
+        return "redirect:/vehicles";
     }
 
-    private AddCarDropDownListDto getDropList() {
-        AddCarDropDownListDto addCarDropDownListDto = AddCarDropDownListDto.getINSTANCE();
-        addCarDropDownListDto.setFuels(defaultDictionaryService.getFuel());
-        addCarDropDownListDto.setManufacturers(defaultDictionaryService.getManufacturer());
-        addCarDropDownListDto.setModels(defaultDictionaryService.getModel());
-        addCarDropDownListDto.setTransmissions(defaultDictionaryService.getTransmission());
-        addCarDropDownListDto.setVehicleCategories(defaultDictionaryService.getVehicleCategory());
-        addCarDropDownListDto.setVehicleTypes(defaultDictionaryService.getVehicleType());
+    private AddVehicleDropDownListDto getDropList() {
+        AddVehicleDropDownListDto addVehicleDropDownListDto = AddVehicleDropDownListDto.getINSTANCE();
+        addVehicleDropDownListDto.setFuels(defaultDictionaryService.getFuel());
+        addVehicleDropDownListDto.setManufacturers(defaultDictionaryService.getManufacturer());
+        addVehicleDropDownListDto.setModels(defaultDictionaryService.getModel());
+        addVehicleDropDownListDto.setTransmissions(defaultDictionaryService.getTransmission());
+        addVehicleDropDownListDto.setVehicleCategories(defaultDictionaryService.getVehicleCategory());
+        addVehicleDropDownListDto.setVehicleTypes(defaultDictionaryService.getVehicleType());
 
-        return addCarDropDownListDto;
+        return addVehicleDropDownListDto;
     }
 }

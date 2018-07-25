@@ -4,25 +4,25 @@ import pl.sdacademy.spring.final_project.car_dealer.model.*;
 
 import java.util.List;
 
-public class AddCarDropDownListDto {
+public class AddVehicleDropDownListDto {
 
-    private static AddCarDropDownListDto INSTANCE = new AddCarDropDownListDto();
+    private static AddVehicleDropDownListDto INSTANCE = new AddVehicleDropDownListDto();
     List<Manufacturer> manufacturers;
-    List<Model> models;
+    List<VechicleModel> models;
     List<Fuel> fuels;
     List<Transmission> transmissions;
     List<VehicleCategory> vehicleCategories;
     List<VehicleType> vehicleTypes;
 
-    public AddCarDropDownListDto() {
+    public AddVehicleDropDownListDto() {
     }
 
-    public static AddCarDropDownListDto getINSTANCE() {
+    public static AddVehicleDropDownListDto getINSTANCE() {
         return INSTANCE;
     }
 
-    public static void setINSTANCE(AddCarDropDownListDto INSTANCE) {
-        AddCarDropDownListDto.INSTANCE = INSTANCE;
+    public static void setINSTANCE(AddVehicleDropDownListDto INSTANCE) {
+        AddVehicleDropDownListDto.INSTANCE = INSTANCE;
     }
 
     public List<Manufacturer> getManufacturers() {
@@ -33,11 +33,11 @@ public class AddCarDropDownListDto {
         this.manufacturers = manufacturers;
     }
 
-    public List<Model> getModels() {
+    public List<VechicleModel> getModels() {
         return models;
     }
 
-    public void setModels(List<Model> models) {
+    public void setModels(List<VechicleModel> models) {
         this.models = models;
     }
 

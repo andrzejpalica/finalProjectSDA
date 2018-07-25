@@ -18,90 +18,163 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>Here you can add your vehicle</h1>
-<h3>Please fill the form above</h3>
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h1 class="display-4">Internetowy Komis Samochodwy</h1>
-        <p class="lead">Tu kupisz lub sprzedaż swój samochód</p>
-    </div>
-</div>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Menu</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" th:href="@{/}">Start</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Pokaż samochody
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" th:href="@{/vehicles/all}">Pokaż wszystkie samochody</a>
-                    <a class="dropdown-item" th:href="@{/vehicles}">Pokaż dostępne samochody</a>
-                    <a class="dropdown-item" th:href="@{/vehicles/sold}">Pokaż sprzedane samochody</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/vehicles/new}">Dodaj samochód<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/addCustomer}">Dodaj klienta</a>
-            </li>
-        </ul>
-        <div class="btn-group">
-            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                Zaloguj się
-            </button>
-            <div class="dropdown-menu">
-                <form>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Adres e-mail</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="Enter email"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Hasło</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
-                    </div>
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-                        <label class="form-check-label" for="exampleCheck1">Zapamiętaj mnie</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Zaloguj</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</nav>
-
 <div class="container">
-    <form th:action="@{/vehicles}" th:method="post" th:object="${addedVehicle}">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="manufacturer">Marka</label>
-            </div>
-            <select class="custom-select" th:field="*{manufacturer}" id="manufacturer" th:errorclass="fieldError">
-                <span class="invalid-feedback" th:if="${#fields.hasErrors('manufacturer')}"
-                      th:errors="*{manufacturer}"/>
-                <option th:each="manufacturer : ${dropList.manufacturers}" th:value="${manufacturer.id} "
-                        th:text="${manufacturer.name}"></option>
-            </select>
+    <div class="jumbotron" style="background-image: url(http://19pzs42g00hy2ju69t37l1bx.wpengine.netdna-cdn.com/wp-content/uploads/2016/02/2016-Chevrolet-Impala-Forest-Lake-MN-HD-01-1200x300.jpg)">
+        <div class="container">
+            <h1 class="display-4">Internetowy Komis Samochodwy</h1>
+            <p class="lead">Tu kupisz lub sprzedaż swój samochód</p>
         </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Menu</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">Start</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Pokaż samochody
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" th:href="@{/vehicles/all}">Pokaż wszystkie samochody</a>
+                        <a class="dropdown-item" th:href="@{/vehicles}">Pokaż dostępne samochody</a>
+                        <a class="dropdown-item" th:href="@{/vehicles/sold}">Pokaż sprzedane samochody</a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/vehicles/new}">Dodaj samochód<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/addCustomer}">Dodaj klienta</a>
+                </li>
+            </ul>
+            <div class="btn-group">
+                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    Zaloguj się
+                </button>
+                <div class="dropdown-menu">
+                    <form>
+                        <div class="form-group">
+                            <div class="container">
+                                <label for="exampleInputEmail1">Adres e-mail</label>
+                                <input type="email" class="form-control-6" id="exampleInputEmail1"
+                                       aria-describedby="emailHelp"
+                                       placeholder="Enter email"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Hasło</label>
+                            <input type="password" class="form-control-6" id="exampleInputPassword1"
+                                   placeholder="Password"/>
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
+                            <label class="form-check-label" for="exampleCheck1">Zapamiętaj mnie</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Zaloguj</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <form>
+        <div class="form-row" th:action="@{/vehicles}" th:object="${addedVehicle}" th:method="post">
+            <div class="form-group col-md-4">
+                <label for="manufacturer">Marka</label>
+                <select class="custom-select" th:field="*{manufacturer}" id="manufacturer">
+                    <option th:each="manufacturer : ${dropList.manufacturers}" th:value="${manufacturer.id} "
+                            th:text="${manufacturer.name}"></option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="model">Model</label>
+                <select class="custom-select" id="model">
+                    <option></option>
+                </select>
+            </div>
+            <div class="form-group col -md-4">
+                <label for="vin">VIN</label>
+                <input type="text" class="form-control" aria-label="Small"
+                       aria-describedby="inputGroup-sizing-sm" id="vin"/>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col -md-3">
+                <label for="engine">Silnik</label>
+                <input type="text" class="form-control" aria-label="Small"
+                       aria-describedby="inputGroup-sizing-sm" id="engine"/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="fuel">Paliwo</label>
+                <select class="custom-select" id="fuel">
+                    <option></option>
+                </select>
+            </div>
+            <div class="form-group col -md-3">
+                <label for="power">Moc (KM)</label>
+                <input type="text" class="form-control" aria-label="Small"
+                       aria-describedby="inputGroup-sizing-sm" id="power"/>
+            </div>
+            <div class="form-group col -md-3">
+                <label for="mileage">Przebieg</label>
+                <input type="text" class="form-control" aria-label="Small"
+                       aria-describedby="inputGroup-sizing-sm" id="mileage"/>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col -md-3">
+                <label for="registration_id">Numer rejestracyjny</label>
+                <input type="text" class="form-control" aria-label="Small"
+                       aria-describedby="inputGroup-sizing-sm" id="registration_id"/>
+            </div>
+            <div class="form-group col -md-3">
+                <label for="insurance_id">Numer ubezpieczenia</label>
+                <input type="text" class="form-control" aria-label="Small"
+                       aria-describedby="inputGroup-sizing-sm" id="insurance_id"/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="vehicle_category">Kategoria</label>
+                <select class="custom-select" id="vehicle_category">
+                    <option></option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="vehicle_type">Typ</label>
+                <select class="custom-select" id="vehicle_type">
+                    <option></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="price">CENA (PLN)</label>
+                <input type="text" class="form-control" aria-label="Small"
+                       aria-describedby="inputGroup-sizing-sm" id="price"/>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="description">Opis</label>
+                <textarea class="form-control" id="description" rows="4"></textarea>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Dodaj</button>
     </form>
+    <br/>
+    <br/>
+    <br/>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h5 align="center">Autor</h5>
+            <h6 align="center">Andrzej Palica</h6>
+        </div>
+    </div>
 </div>
-
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
 </body>
 </html>
