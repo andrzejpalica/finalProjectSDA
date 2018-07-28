@@ -18,7 +18,7 @@ public class Vehicle extends BaseModel {
 
     @OneToOne
     @JoinColumn(name = "model_id")
-    private VechicleModel model;
+    private VehicleModel model;
 
     @Column(name = "insurance_id")
     private String insuranceId;
@@ -47,12 +47,14 @@ public class Vehicle extends BaseModel {
     private String description;
 
     @Column(name = "test_drives")
-    private Long testDrives;
+    private Long testDrives = 0L;
 
-    @Column(name = "vehicle_category")
+    @OneToOne
+    @JoinColumn(name = "vehicle_category")
     private VehicleCategory vehicleCategory;
 
-    @Column(name = "vehicle_type")
+    @OneToOne
+    @JoinColumn(name = "vehicle_type")
     private VehicleType vehicleType;
 
     @Column
@@ -88,11 +90,11 @@ public class Vehicle extends BaseModel {
         this.manufacturer = manufacturer;
     }
 
-    public VechicleModel getModel() {
+    public VehicleModel getModel() {
         return model;
     }
 
-    public void setModel(VechicleModel model) {
+    public void setModel(VehicleModel model) {
         this.model = model;
     }
 

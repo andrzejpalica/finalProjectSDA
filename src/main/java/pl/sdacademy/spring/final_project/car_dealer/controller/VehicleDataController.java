@@ -27,7 +27,7 @@ public class VehicleDataController {
     @GetMapping
     public String showAvailableVehicles(Model model) {
         List<Vehicle> vehicles = vehicleDataService.loadAllAvailableVehicles();
-        model.addAttribute("headerMsg", "Cars For Sale");
+        model.addAttribute("headerMsg", "Vehilces For Sale");
         model.addAttribute("vehicles", vehicles);
         return "vehicles";
     }
@@ -35,7 +35,7 @@ public class VehicleDataController {
     @GetMapping("/sold")
     public String showAllSoldVehicles(Model model) {
         List<Vehicle> vehicles = vehicleDataService.loadAllSoldVehicles();
-        model.addAttribute("headerMsg", "Sold Cars");
+        model.addAttribute("headerMsg", "Sold Vehicles");
         model.addAttribute("vehicles", vehicles);
         return "vehicles";
     }
@@ -43,7 +43,7 @@ public class VehicleDataController {
     @GetMapping("/all")
     public String showAllVehicles(Model model) {
         List<Vehicle> vehicles = vehicleDataService.loadAllVehicles();
-        model.addAttribute("headerMsg", "All Cars");
+        model.addAttribute("headerMsg", "All Vehicles");
         model.addAttribute("vehicles", vehicles);
         return "vehicles";
     }

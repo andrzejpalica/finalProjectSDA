@@ -8,7 +8,7 @@ public class AddVehicleDropDownListDto {
 
     private static AddVehicleDropDownListDto INSTANCE = new AddVehicleDropDownListDto();
     List<Manufacturer> manufacturers;
-    List<VechicleModel> models;
+    List<VehicleModel> models;
     List<Fuel> fuels;
     List<Transmission> transmissions;
     List<VehicleCategory> vehicleCategories;
@@ -33,11 +33,11 @@ public class AddVehicleDropDownListDto {
         this.manufacturers = manufacturers;
     }
 
-    public List<VechicleModel> getModels() {
+    public List<VehicleModel> getModels() {
         return models;
     }
 
-    public void setModels(List<VechicleModel> models) {
+    public void setModels(List<VehicleModel> models) {
         this.models = models;
     }
 

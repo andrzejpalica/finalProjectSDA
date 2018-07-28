@@ -1,7 +1,7 @@
 package pl.sdacademy.spring.final_project.car_dealer.repositoriy;
 
-import pl.sdacademy.spring.final_project.car_dealer.model.VechicleModel;
+import pl.sdacademy.spring.final_project.car_dealer.model.VehicleModel;
 import org.springframework.data.repository.CrudRepository;
 
-public interface ModelRepository extends CrudRepository<VechicleModel, Long> {
+public interface ModelRepository extends CrudRepository<VehicleModel, Long> {
 }

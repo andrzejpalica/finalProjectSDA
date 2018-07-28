@@ -32,8 +32,8 @@ public class DefaultDictionaryService implements DictionaryService {
     }
 
     @Override
-    public List<VechicleModel> getModel() {
-        return (List<VechicleModel>) modelRepository.findAll();
+    public List<VehicleModel> getModel() {
+        return (List<VehicleModel>) modelRepository.findAll();
     }
 
     @Override

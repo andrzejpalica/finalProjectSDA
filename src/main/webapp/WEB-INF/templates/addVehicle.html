@@ -19,7 +19,8 @@
 </head>
 <body>
 <div class="container">
-    <div class="jumbotron" style="background-image: url(http://19pzs42g00hy2ju69t37l1bx.wpengine.netdna-cdn.com/wp-content/uploads/2016/02/2016-Chevrolet-Impala-Forest-Lake-MN-HD-01-1200x300.jpg)">
+    <div class="jumbotron"
+         style="background-image: url(http://19pzs42g00hy2ju69t37l1bx.wpengine.netdna-cdn.com/wp-content/uploads/2016/02/2016-Chevrolet-Impala-Forest-Lake-MN-HD-01-1200x300.jpg)">
         <div class="container">
             <h1 class="display-4">Internetowy Komis Samochodwy</h1>
             <p class="lead">Tu kupisz lub sprzedaż swój samochód</p>
@@ -85,71 +86,88 @@
             </div>
         </div>
     </nav>
-    <form>
-        <div class="form-row" th:action="@{/vehicles}" th:object="${addedVehicle}" th:method="post">
+    <form th:action="@{/vehicles}" th:object="${addedVehicle}" th:method="post">
+        <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="manufacturer">Marka</label>
                 <select class="custom-select" th:field="*{manufacturer}" id="manufacturer">
-                    <option th:each="manufacturer : ${dropList.manufacturers}" th:value="${manufacturer.id} "
+                    <option th:each="manufacturer : ${dropList.manufacturers}" th:value="${manufacturer.id}"
                             th:text="${manufacturer.name}"></option>
                 </select>
             </div>
             <div class="form-group col-md-4">
                 <label for="model">Model</label>
-                <select class="custom-select" id="model">
-                    <option></option>
+                <select class="custom-select" id="model" th:field="*{model}">
+                    <option th:each="carModel : ${dropList.models}" th:value="${carModel.id}"
+                            th:text="${carModel.name}"></option>
                 </select>
             </div>
             <div class="form-group col -md-4">
                 <label for="vin">VIN</label>
                 <input type="text" class="form-control" aria-label="Small"
-                       aria-describedby="inputGroup-sizing-sm" id="vin"/>
+                       aria-describedby="inputGroup-sizing-sm" id="vin" th:field="*{vin}"/>
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col -md-3">
-                <label for="engine">Silnik</label>
+            <div class="form-group col -md-4">
+                <label for="engine">Silnik (ccm3)</label>
                 <input type="text" class="form-control" aria-label="Small"
-                       aria-describedby="inputGroup-sizing-sm" id="engine"/>
+                       aria-describedby="inputGroup-sizing-sm" id="engine" th:field="*{engine}"/>
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-4">
                 <label for="fuel">Paliwo</label>
-                <select class="custom-select" id="fuel">
-                    <option></option>
+                <select class="custom-select" id="fuel" th:field="*{fuel}">
+                    <option th:each="fuel : ${dropList.fuels}" th:value="${fuel.id}" th:text="${fuel.name}"></option>
                 </select>
             </div>
-            <div class="form-group col -md-3">
+            <div class="form-group col -md-4">
                 <label for="power">Moc (KM)</label>
                 <input type="text" class="form-control" aria-label="Small"
-                       aria-describedby="inputGroup-sizing-sm" id="power"/>
+                       aria-describedby="inputGroup-sizing-sm" id="power" th:field="*{power}"/>
             </div>
-            <div class="form-group col -md-3">
-                <label for="mileage">Przebieg</label>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="fuel">Skrzynia biegów</label>
+                <select class="custom-select" id="transmission" th:field="*{transmission}">
+                    <option th:each="transmission : ${dropList.transmissions}" th:value="${transmission.id}"
+                            th:text="${transmission.name}"></option>
+                </select>
+            </div>
+            <div class="form-group col -md-4">
+                <label for="mileage">Rok produkcji (rok)</label>
                 <input type="text" class="form-control" aria-label="Small"
-                       aria-describedby="inputGroup-sizing-sm" id="mileage"/>
+                       aria-describedby="inputGroup-sizing-sm" id="production_year" th:field="*{productionYear}"/>
+            </div>
+            <div class="form-group col -md-4">
+                <label for="mileage">Przebieg (km)</label>
+                <input type="text" class="form-control" aria-label="Small"
+                       aria-describedby="inputGroup-sizing-sm" id="mileage" th:field="*{mileage}"/>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col -md-3">
                 <label for="registration_id">Numer rejestracyjny</label>
                 <input type="text" class="form-control" aria-label="Small"
-                       aria-describedby="inputGroup-sizing-sm" id="registration_id"/>
+                       aria-describedby="inputGroup-sizing-sm" id="registration_id" th:field="*{registrationId}"/>
             </div>
             <div class="form-group col -md-3">
                 <label for="insurance_id">Numer ubezpieczenia</label>
                 <input type="text" class="form-control" aria-label="Small"
-                       aria-describedby="inputGroup-sizing-sm" id="insurance_id"/>
+                       aria-describedby="inputGroup-sizing-sm" id="insurance_id" th:field="*{insuranceId}"/>
             </div>
             <div class="form-group col-md-3">
                 <label for="vehicle_category">Kategoria</label>
-                <select class="custom-select" id="vehicle_category">
-                    <option></option>
+                <select class="custom-select" id="vehicle_category" th:field="*{vehicleCategory}">
+                    <option th:each="category : ${dropList.vehicleCategories}" th:value="${category.id}"
+                            th:text="${category.name}"></option>
                 </select>
             </div>
             <div class="form-group col-md-3">
                 <label for="vehicle_type">Typ</label>
-                <select class="custom-select" id="vehicle_type">
-                    <option></option>
+                <select class="custom-select" id="vehicle_type" th:field="*{vehicleType}">
+                    <option th:each="type : ${dropList.vehicleTypes}" th:value="${type.id}"
+                            th:text="${type.name}"></option>
                 </select>
             </div>
         </div>
@@ -157,11 +175,11 @@
             <div class="form-group col-md-6">
                 <label for="price">CENA (PLN)</label>
                 <input type="text" class="form-control" aria-label="Small"
-                       aria-describedby="inputGroup-sizing-sm" id="price"/>
+                       aria-describedby="inputGroup-sizing-sm" id="price" th:field="*{price}"/>
             </div>
             <div class="form-group col-md-6">
                 <label for="description">Opis</label>
-                <textarea class="form-control" id="description" rows="4"></textarea>
+                <textarea class="form-control" id="description" rows="4" th:field="*{description}"></textarea>
             </div>
         </div>
         <button type="submit" class="btn btn-primary btn-lg btn-block">Dodaj</button>
